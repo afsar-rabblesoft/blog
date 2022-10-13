@@ -1,0 +1,22 @@
+{%extends 'base.html' %}
+
+{%block title %}Welcome to the Blog {%endblock%}
+
+{%block content%}
+
+<div class="container">
+    <h3>{{cat.title}}</h3>
+    <div class="img-responsive">
+        <img src="/media/{{cat.image}}" alt="" style="max-height: 400px;  object-fit: cover;
+        ">
+    </div>
+    <div class="container">
+        {%for p in posts%}
+        <a href="/blog/{{p.url}}">{{p.title}}</a>
+        {%empty%}
+        <h1>No Post</h1>
+        {%endfor%}
+    </div>
+</div>
+
+{%endblock%}

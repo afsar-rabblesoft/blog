@@ -1,0 +1,82 @@
+{%extends 'base.html' %}
+
+{%block title %}POST {%endblock%}
+
+{%block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10">
+            <h3>{{posts.title}}</h3>
+            <p>({{posts.cat.title}})</p>
+
+            <img src="/media/{{posts.image}}" alt="" class="responsive-img"
+                style="margin-top:30px;height: 200px;width: 200px;">
+            <br>
+            <p>{{posts.content | safe}}</p>
+
+        </div>
+        <div class="col s12 m2" style="float: right;">
+
+            {%for cat in cats%}
+            <div>
+                <div>
+                    <div>
+                        <img src="/media/{{cat.image}}" class="inline-block "
+                            style="width: 200px;height:200px;float: inline-start;" alt="">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        {{cat.title}}
+                    </div>
+                    <p class="text-truncate">
+                        {{cat.description}}
+                    </p>
+                    <div class="container">
+                        <a href="/category/{{cat.url}}" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+
+
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% for post in object_list %}
+            <div class="col-md-4">
+                <p class="card-text"> {{ post.title }} </p>
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ post.image.url}}" alt="{{ post.title }}" width="400" height="400">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- <h1>Create a Post</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit New Post</button>
+</form>
+ -->
+
+{% for d in data %}
+<div>
+    <p class="card-text"> {{ d.title }} </p>
+    <p>{{ d.comment }}</p>
+</div>
+</div>
+<br>
+{% endfor %}
+
+
+<a href="{% url 'home' %}">Load Comment</a><br>
+
+<a href="{% url 'add_post' %}">Comment</a>
+{%endblock%}

@@ -1,0 +1,54 @@
+{%extends 'base.html' %}
+
+{%block title %}Welcome to the Blog {%endblock%}
+
+{%block content%}
+
+
+
+{%for cat in cats%}
+<!-- <div class="card">
+    <div class="img-container">
+        <img src="/media/{{cat.image}}" class="inline-block " style="width: 200px;height:200px;float: inline-start;"
+            alt="">
+    </div> -->
+<!-- </div> -->
+
+<h1 class="float-left"> {{cat.title}}</h1>
+
+<p class="text-truncate">
+    <!-- {{cat.description}} -->
+</p>
+
+<a href="/category/{{cat.url}}" class="btn btn-primary" style="float: left;">View</a><br>
+
+
+{%endfor%}
+<br>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col s12 m8">
+                {%for p in posts%}
+                <h1>{{p.title}}</h1>
+                <br>
+                {{p.content | truncatewords:20 | safe}}
+                <div class="">
+                    <a href="/blog/{{p.url}}" class="btn btn-primary" style="margin-top:10px;">Read More..</a>
+                </div>
+                <div class="s12 m4">
+                    <img src="/media/{{p.image}}" alt="" class="float-right"
+                        style="margin-top:30px;height: 200px;width: 200px;">
+                </div>
+                {%endfor%}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

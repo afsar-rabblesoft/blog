@@ -1,0 +1,14 @@
+<div>
+
+    {% for d in data %}
+    <div class="col-md-4">
+        <p class="card-text"> {{ d.title }} </p>
+        <p>{{ d.comment }}</p>
+
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+
+<a href="{% url 'root' %}">Home</a><br>
